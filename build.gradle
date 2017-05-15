@@ -1,0 +1,39 @@
+group 'de.feffi'
+version '1.0-SNAPSHOT'
+description "Serial Number Validation Framework"
+ur
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'pmd'
+apply plugin: 'signing'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'jNumber'
+    version = '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+//    compile "junitperf:junitperf:1.8"
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+//    testCompile "org.databene:contiperf:2.0.0"
+//    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+
