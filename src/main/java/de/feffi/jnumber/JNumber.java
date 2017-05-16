@@ -7,11 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author feffi <feffi@feffi.org>
  */
 @SpringBootApplication
-public final class JNumber {
-
-  private JNumber() {
-    // This is a main class, so no instanciation is done here.
-  }
+public class JNumber {
 
   /**
    * @param args The command line arguments.

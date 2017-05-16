@@ -87,7 +87,7 @@ public class Imei extends AbstractSerial<ImeiEvaluationSet> {
       throw new ValidationException(EnumSerialError.INVALID_LENGTH.toString());
     }
 
-    // cehck for allowed chars
+    // check for allowed chars
     if (!transformedSerial.chars().allMatch(Character::isDigit)) {
       if (LOG.isDebugEnabled()) {
         LOG.debug("IMEI [{}] syntactic check failure: {}", transformedSerial, EnumSerialError.INVALID_CHARS.toString());

@@ -5,36 +5,40 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URISyntaxException;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import java.util.stream.Collectors;
 
 /**
  * Created by wennemuth_k on 15.05.2017.
  */
 @RestController
-@RequestMapping("/imei/{imei}")
+//@RequestMapping("/imei/{imei}")
 public class ImeiController {
   
   /**
    * Default logging facility.
    */
   final private static Logger LOG = LoggerFactory.getLogger(ImeiController.class);
-  
-  
-  @RequestMapping(method = RequestMethod.POST, produces = APPLICATION_JSON_VALUE)
-  
-  @GetMapping("/customers/{imei}")
-  public ResponseEntity validate(@PathVariable(value="imei") String imei) {
-     
+
+  @GetMapping({"/imei/{serial}/{method}", "/imei/{serial}"})
+  public ResponseEntity validate(@PathVariable(value="serial") String serial, @PathVariable(value="method", required = false) String method) {
     try {
-      Imei serial = new Imei(imei);
-      serial.validate();
+      Imei imei = new Imei(serial);
+      if (method == null) {
+        imei.validate();
+      } else if (method.equalsIgnoreCase("syntax")) {
+        imei.validateSyntax();
+      } else if (method.equalsIgnoreCase("semantic")) {
+        imei.validateSemantic();
+      }
     } catch (ValidationException e) {
-      LOG.debug("IMEI invalid::" + e.getMessage(), e);
-      return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+      String messages = e.getValidationErrors().isEmpty() ? e.getMessage() : e.getMessage() + ", " + e.getValidationErrors().stream().map(er -> e.getMessage()).collect(Collectors.joining(", "));
+      LOG.debug("IMEI invalid::" + messages, e);
+      return new ResponseEntity<>(messages, HttpStatus.BAD_REQUEST);
     } catch (URISyntaxException e) {
       LOG.debug("URL invalid::" + e.getMessage(), e);
       return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
