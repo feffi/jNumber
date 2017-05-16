@@ -1,6 +1,3 @@
-/**
- * @officialDocumentation
- */
 package de.feffi.jnumber;
 
 import org.slf4j.Logger;
@@ -12,8 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author feffi <feffi@feffi.org>
+ *   
  * @param <T> The type of evaluation set.
- * @author feffi
  */
 public abstract class AbstractSerial<T> implements Serial<T> {
 
@@ -24,23 +22,23 @@ public abstract class AbstractSerial<T> implements Serial<T> {
   /**
    * The given serial number
    */
-  public String valueRaw = null;
+  private String valueRaw = null;
   /**
    * The chars to strip from the raw serial.
    */
-  protected String charFilter = null;
+  private String charFilter = null;
   /**
    * The internal serial algorithm version.
    */
-  protected String internalVersion = null;
+  private String internalVersion = null;
   /**
    * The manufacturer documentation URI.
    */
-  protected URI manufacturerDocumentationUri = null;
+  private URI manufacturerDocumentationUri = null;
   /**
    * The manufacturer serial algorithm version.
    */
-  protected String manufacturerVersion = null;
+  private String manufacturerVersion = null;
 
   /**
    * Constructor
@@ -50,11 +48,11 @@ public abstract class AbstractSerial<T> implements Serial<T> {
    * @param manufacturerDocumentationUri The manufacturer documentation URI.
    * @param manufacturerVersion          The manufacturer serial algorithm version.
    */
-  public AbstractSerial(
+  protected AbstractSerial(
       final String charFilter,
       final String internalVersion,
       final String manufacturerVersion,
-      final String manufacturerDocumentationUri) {
+      final String manufacturerDocumentationUri) throws URISyntaxException {
     super();
     /*
 		 * LOG.debug(
@@ -67,7 +65,8 @@ public abstract class AbstractSerial<T> implements Serial<T> {
     try {
       this.manufacturerDocumentationUri = new URI(manufacturerDocumentationUri);
     } catch (final URISyntaxException e) {
-      LOG.error("Could not instaciate! Errornous URI given! {}", e.getMessage());
+      LOG.error("Could not instantiate! Errornous URI given! {}", e.getMessage());
+      throw e;
     }
   }
 
@@ -99,47 +98,47 @@ public abstract class AbstractSerial<T> implements Serial<T> {
    *
    * @return The specialized evaluation set.
    */
-  public abstract T getEvaluationSet();
+  protected abstract T getEvaluationSet();
 
   /**
    * @return the internalVersion
    */
-  protected String getInternalVersion() {
+  String getInternalVersion() {
     return this.internalVersion;
   }
 
   /**
    * @param internalVersion the internalVersion to set
    */
-  protected void setInternalVersion(final String internalVersion) {
+  void setInternalVersion(final String internalVersion) {
     this.internalVersion = internalVersion;
   }
 
   /**
    * @return the manufacturerDocumentationUri
    */
-  protected URI getManufacturerDocumentationUri() {
+  URI getManufacturerDocumentationUri() {
     return this.manufacturerDocumentationUri;
   }
 
   /**
    * @param manufacturerDocumentationUri the manufacturerDocumentationUri to set
    */
-  protected void setManufacturerDocumentationUri(final URI manufacturerDocumentationUri) {
+  void setManufacturerDocumentationUri(final URI manufacturerDocumentationUri) {
     this.manufacturerDocumentationUri = manufacturerDocumentationUri;
   }
 
   /**
    * @return the manufacturerVersion
    */
-  protected String getManufacturerVersion() {
+  String getManufacturerVersion() {
     return this.manufacturerVersion;
   }
 
   /**
    * @param manufacturerVersion the manufacturerVersion to set
    */
-  protected void setManufacturerVersion(final String manufacturerVersion) {
+  void setManufacturerVersion(final String manufacturerVersion) {
     this.manufacturerVersion = manufacturerVersion;
   }
 
@@ -162,12 +161,14 @@ public abstract class AbstractSerial<T> implements Serial<T> {
    * @see de.feffi.jnumber.Serial#isValid()
    */
   public Boolean isValid() {
-    boolean valid = false;
+    boolean valid;
     try {
       this.validate();
       valid = true;
-    } catch (final ValidationException ve) {
+      LOG.debug("IMEI valid.");
+    } catch (final Exception ve) {
       valid = false;
+      LOG.debug("IMEI invalid::" + ve.getMessage(), ve);
     }
     return valid;
   }
@@ -185,7 +186,7 @@ public abstract class AbstractSerial<T> implements Serial<T> {
    */
   public void validate() throws ValidationException {
     LOG.debug("Validating IMEI syntax.");
-    final List<ValidationException> validationErrors = new ArrayList<ValidationException>();
+    final List<ValidationException> validationErrors = new ArrayList<>();
 
     // validate Syntax first
     try {
@@ -213,12 +214,12 @@ public abstract class AbstractSerial<T> implements Serial<T> {
    *
    * @throws ValidationException If validations fails.
    */
-  public abstract void validateSemantic() throws ValidationException;
+  protected abstract void validateSemantic() throws ValidationException;
 
   /**
    * Validates the syntax of a number.
    *
    * @throws ValidationException If validations fails.
    */
-  public abstract void validateSyntax() throws ValidationException;
+  protected abstract void validateSyntax() throws ValidationException;
 }

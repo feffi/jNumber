@@ -1,13 +1,11 @@
-/**
- *
- */
 package de.feffi.jnumber.checksum;
 
-import junit.framework.Assert;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public class LuhnAlgorithmTest {
 
@@ -22,13 +20,13 @@ public class LuhnAlgorithmTest {
   @Test
   public void testAccept() {
     final LuhnAlgorithm luhn = new LuhnAlgorithm(VALID_LUHN);
-    Assert.assertTrue(luhn.accept());
+    assertTrue(luhn.accept());
 
     final LuhnAlgorithm luhn2 = new LuhnAlgorithm(VALID_LUHN_TWO);
-    Assert.assertTrue(luhn2.accept());
+    assertTrue(luhn2.accept());
 
     final LuhnAlgorithm luhnNegative = new LuhnAlgorithm(INVALID_LUHN);
-    Assert.assertFalse(luhnNegative.accept());
+    assertFalse(luhnNegative.accept());
 
   }
 
@@ -38,9 +36,9 @@ public class LuhnAlgorithmTest {
   @Test
   public void testCompute() {
     final LuhnAlgorithm luhn = new LuhnAlgorithm(VALID_LUHN);
-    Assert.assertEquals(0, luhn.compute());
+    assertEquals(0, luhn.compute());
     final LuhnAlgorithm luhn2 = new LuhnAlgorithm(COMPUTE_TEST);
-    Assert.assertEquals(7, luhn2.compute());
+    assertEquals(7, luhn2.compute());
   }
 
   /**
@@ -49,9 +47,9 @@ public class LuhnAlgorithmTest {
   @Test
   public void testGetChecksum() {
     final LuhnAlgorithm luhn = new LuhnAlgorithm(VALID_LUHN);
-    Assert.assertEquals(10, luhn.getChecksum());
+    assertEquals(10, luhn.getChecksum());
     final LuhnAlgorithm luhn2 = new LuhnAlgorithm(COMPUTE_TEST);
-    Assert.assertEquals(3, luhn2.getChecksum());
+    assertEquals(3, luhn2.getChecksum());
   }
 
   /**
@@ -60,7 +58,7 @@ public class LuhnAlgorithmTest {
   @Test
   public void testGetValue() {
     final LuhnAlgorithm luhn = new LuhnAlgorithm(VALID_LUHN);
-    Assert.assertEquals(VALID_LUHN, luhn.getValue());
+    assertEquals(VALID_LUHN, luhn.getValue());
   }
 
   /**
@@ -71,7 +69,7 @@ public class LuhnAlgorithmTest {
   public void testLuhnAlgorithm() {
     final LuhnAlgorithm luhn = new LuhnAlgorithm(VALID_LUHN);
     final LuhnAlgorithm luhn2 = new LuhnAlgorithm(VALID_LUHN_TWO);
-    Assert.assertNotSame(luhn, luhn2);
+    assertNotSame(luhn, luhn2);
   }
 
   /**
@@ -81,8 +79,8 @@ public class LuhnAlgorithmTest {
   @Test
   public void testSetValue() {
     final LuhnAlgorithm luhn = new LuhnAlgorithm(VALID_LUHN);
-    Assert.assertEquals(VALID_LUHN, luhn.getValue());
+    assertEquals(VALID_LUHN, luhn.getValue());
     luhn.setValue(VALID_LUHN_TWO);
-    Assert.assertEquals(VALID_LUHN_TWO, luhn.getValue());
+    assertEquals(VALID_LUHN_TWO, luhn.getValue());
   }
 }

@@ -1,13 +1,10 @@
-/**
- *
- */
 package de.feffi.jnumber;
 
 /**
  * @param <T> Type of EvaluationSet.
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
-public interface Serial<T> {
+interface Serial<T> {
 
   /**
    * Evaluates, if possible, the given serial number.

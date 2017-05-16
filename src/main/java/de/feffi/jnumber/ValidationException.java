@@ -1,6 +1,3 @@
-/**
- *
- */
 package de.feffi.jnumber;
 
 import java.util.ArrayList;
@@ -9,7 +6,7 @@ import java.util.List;
 /**
  * Exception any errors regarding the syntax or semantic.
  *
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public class ValidationException extends Exception {
 
@@ -21,7 +18,7 @@ public class ValidationException extends Exception {
   /**
    * The occured validation errors
    */
-  private List<ValidationException> validationErrors = new ArrayList<ValidationException>();
+  private List<ValidationException> validationErrors = new ArrayList<>();
 
   /**
    * Default constructor.

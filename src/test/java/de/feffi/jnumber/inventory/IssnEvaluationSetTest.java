@@ -1,13 +1,12 @@
-/**
- *
- */
 package de.feffi.jnumber.inventory;
 
-import junit.framework.Assert;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public class IssnEvaluationSetTest {
 
@@ -20,7 +19,7 @@ public class IssnEvaluationSetTest {
    */
   @Test
   public void testGetCheckDigit() {
-    Assert.assertTrue(true);
+    assertTrue(true);
   }
 
   /**
@@ -30,6 +29,6 @@ public class IssnEvaluationSetTest {
   @Test
   public void testSetCheckDigit() {
     final IssnEvaluationSet testSet = new IssnEvaluationSet(VALID_ISSN_TRANSFORMED, VALID_ISSN_CHECKDIGIT);
-    Assert.assertEquals(VALID_ISSN_CHECKDIGIT, testSet.getCheckDigit());
+    assertEquals(VALID_ISSN_CHECKDIGIT, testSet.getCheckDigit());
   }
 }

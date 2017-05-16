@@ -1,12 +1,9 @@
-/**
- *
- */
 package de.feffi.jnumber.mobile.imei;
 
 import de.feffi.jnumber.evaluation.AbstractEvaluationSet;
 
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 
 // TODO: Validator for TAC, FAC, SVN
@@ -40,7 +37,7 @@ public class ImeiEvaluationSet extends AbstractEvaluationSet {
    * @param softwareVersionNumber Software version number identifying the revision of the software installed
    *                              on the phone. 99 is reserved.
    */
-  public ImeiEvaluationSet(
+  ImeiEvaluationSet(
       final String valueTransformed,
       final int checkDigit,
       final String typeAllocationCode,
@@ -64,35 +61,35 @@ public class ImeiEvaluationSet extends AbstractEvaluationSet {
   /**
    * @param checkDigit the checkDigit to set
    */
-  public void setCheckDigit(final int checkDigit) {
+  void setCheckDigit(final int checkDigit) {
     this.checkDigit = checkDigit;
   }
 
   /**
    * @return the finalAssemblyCode
    */
-  public String getFinalAssemblyCode() {
+  String getFinalAssemblyCode() {
     return this.finalAssemblyCode;
   }
 
   /**
    * @param finalAssemblyCode the finalAssemblyCode to set
    */
-  public void setFinalAssemblyCode(final String finalAssemblyCode) {
+  void setFinalAssemblyCode(final String finalAssemblyCode) {
     this.finalAssemblyCode = finalAssemblyCode;
   }
 
   /**
    * @return the serialNumber
    */
-  public String getSoftwareVersionNumber() {
+  String getSoftwareVersionNumber() {
     return this.softwareVersionNumber;
   }
 
   /**
    * @param softwareVersionNumber the serialNumber to set
    */
-  public void setSoftwareVersionNumber(final String softwareVersionNumber) {
+  void setSoftwareVersionNumber(final String softwareVersionNumber) {
     this.softwareVersionNumber = softwareVersionNumber;
   }
 
@@ -100,14 +97,14 @@ public class ImeiEvaluationSet extends AbstractEvaluationSet {
    * @return the typeAllocationCode Type Approval Code, @see
    * http://en.wikipedia.org/wiki/Type_Allocation_Code
    */
-  public String getTypeAllocationCode() {
+  String getTypeAllocationCode() {
     return this.typeAllocationCode;
   }
 
   /**
    * @param typeAllocationCode Type Allocation Code, @see http://en.wikipedia.org/wiki/Type_Allocation_Code
    */
-  public void setTypeAllocationCode(final String typeAllocationCode) {
+  void setTypeAllocationCode(final String typeAllocationCode) {
     this.typeAllocationCode = typeAllocationCode;
   }
 }

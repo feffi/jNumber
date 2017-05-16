@@ -1,14 +1,13 @@
-/**
- *
- */
 package de.feffi.jnumber.mobile.imei;
 
 import de.feffi.jnumber.ValidationException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.net.URISyntaxException;
+
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public class ImeiTest {
 
@@ -21,28 +20,28 @@ public class ImeiTest {
   private static final String VALID_IMEI_TWO = "202020202020206";
 
   /**
-   * Test method for {@link de.feffi.jnumber.mobile.imei.Imei#Imei(java.lang.String)} .
+   * Test method for {@link de.feffi.jnumber.mobile.imei.Imei#Imei(java.lang.String)}.
    */
   @Test
-  public void testImei() {
+  public void testImei() throws URISyntaxException {
     final Imei imei = new Imei(VALID_IMEI);
     Assert.assertEquals(Imei.class, imei.getClass());
   }
 
   /**
-   * Test method for {@link de.feffi.jnumber.mobile.imei.Imei#transform()} .
+   * Test method for {@link de.feffi.jnumber.mobile.imei.Imei#transform()}.
    */
   @Test
-  public void testTransform() {
+  public void testTransform() throws URISyntaxException {
     final Imei imei1 = new Imei(VALID_IMEI_CHARS);
     Assert.assertEquals(imei1.transform(), "101010101010103");
   }
 
   /**
-   * Test method for {@link de.feffi.jnumber.mobile.imei.Imei#validateSemantic()} .
+   * Test method for {@link de.feffi.jnumber.mobile.imei.Imei#validateSemantic()}.
    */
   @Test
-  public void testValidateSemantic() {
+  public void testValidateSemantic() throws URISyntaxException {
     final Imei imei1 = new Imei(VALID_IMEI);
     final Imei imei2 = new Imei(VALID_IMEI_TWO);
     final Imei imeiInvalid1 = new Imei(INVALID_IMEI_CHECKSUM);
@@ -78,10 +77,10 @@ public class ImeiTest {
   }
 
   /**
-   * Test method for {@link de.feffi.jnumber.mobile.imei.Imei#validateSyntax()} .
+   * Test method for {@link de.feffi.jnumber.mobile.imei.Imei#validateSyntax()}.
    */
   @Test
-  public void testValidateSyntax() {
+  public void testValidateSyntax() throws URISyntaxException {
     final Imei imei1 = new Imei(VALID_IMEI);
     final Imei imei2 = new Imei(VALID_IMEI_TWO);
     final Imei imeiInvalid1 = new Imei(INVALID_IMEI_CHARS);

@@ -1,13 +1,12 @@
-/**
- *
- */
 package de.feffi.jnumber.evaluation;
 
-import junit.framework.Assert;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public class CommonEvaluationSetTest {
 
@@ -17,7 +16,7 @@ public class CommonEvaluationSetTest {
   @Test
   public void testCommonEvaluationSetString() {
     this.testGetValueTransformed();
-    Assert.assertTrue(true);
+    assertTrue(true);
   }
 
   /**
@@ -26,7 +25,7 @@ public class CommonEvaluationSetTest {
   @Test
   public void testGetValueTransformed() {
     final CommonEvaluationSet testClass = new CommonEvaluationSet("test");
-    Assert.assertEquals("test", testClass.getValueTransformed());
+    assertEquals("test", testClass.getValueTransformed());
   }
 
   /**
@@ -36,6 +35,6 @@ public class CommonEvaluationSetTest {
   public void testSetValueTransformed() {
     final CommonEvaluationSet testClass = new CommonEvaluationSet("test");
     testClass.setValueTransformed("test2");
-    Assert.assertEquals("test2", testClass.getValueTransformed());
+    assertEquals("test2", testClass.getValueTransformed());
   }
 }

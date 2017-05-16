@@ -1,11 +1,8 @@
-/**
- *
- */
 package de.feffi.jnumber.evaluation;
 
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
-public interface EvaluationSet {
+interface EvaluationSet {
 
 }

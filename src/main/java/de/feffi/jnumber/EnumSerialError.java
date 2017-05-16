@@ -1,7 +1,7 @@
 package de.feffi.jnumber;
 
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 @SuppressWarnings("all")
 public enum EnumSerialError {

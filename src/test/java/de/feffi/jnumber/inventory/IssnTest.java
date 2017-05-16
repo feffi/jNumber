@@ -1,14 +1,15 @@
-/**
- *
- */
 package de.feffi.jnumber.inventory;
 
 import de.feffi.jnumber.ValidationException;
-import junit.framework.Assert;
 import org.junit.Test;
 
+import java.net.URISyntaxException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public class IssnTest {
 
@@ -22,49 +23,49 @@ public class IssnTest {
    * Test method for {@link de.feffi.jnumber.inventory.Issn#getEvaluationSet()} .
    */
   @Test
-  public void testGetEvaluationSet() {
+  public void testGetEvaluationSet() throws URISyntaxException {
     final Issn testClass = new Issn(VALID_ISSN);
-    Assert.assertEquals(IssnEvaluationSet.class, testClass.getEvaluationSet().getClass());
+    assertEquals(IssnEvaluationSet.class, testClass.getEvaluationSet().getClass());
   }
 
   /**
    * Test method for {@link de.feffi.jnumber.inventory.Issn#Issn(java.lang.String)} .
    */
   @Test
-  public void testInternationalStandardBookNumber() {
+  public void testInternationalStandardBookNumber() throws URISyntaxException {
     final Issn testClass = new Issn(VALID_ISSN);
-    Assert.assertEquals(Issn.class, testClass.getClass());
+    assertEquals(Issn.class, testClass.getClass());
   }
 
   /**
    * Test method for {@link de.feffi.jnumber.inventory.Issn#transform()}.
    */
   @Test
-  public void testTransform() {
+  public void testTransform() throws URISyntaxException {
     final Issn testClass = new Issn(VALID_ISSN);
-    Assert.assertEquals(VALID_ISSN_TRANSFORMED, testClass.transform());
+    assertEquals(VALID_ISSN_TRANSFORMED, testClass.transform());
   }
 
   /**
    * Test method for {@link de.feffi.jnumber.inventory.Issn#validateSemantic()} .
    */
   @Test
-  public void testValidateSemantic() {
+  public void testValidateSemantic() throws URISyntaxException {
     final Issn issn1 = new Issn(VALID_ISSN);
     final Issn issnInvalid1 = new Issn(INVALID_ISSN_CHECKSUM);
 
     try {
       issn1.validateSemantic();
-      Assert.assertTrue(true);
+      assertTrue(true);
     } catch (final ValidationException ve) {
-      Assert.assertTrue(false);
+      assertTrue(false);
     }
 
     try {
       issnInvalid1.validateSemantic();
-      Assert.assertTrue(false);
+      assertTrue(false);
     } catch (final ValidationException ve) {
-      Assert.assertTrue(true);
+      assertTrue(true);
     }
   }
 
@@ -72,7 +73,7 @@ public class IssnTest {
    * Test method for {@link de.feffi.jnumber.inventory.Issn#validateSyntax()}.
    */
   @Test
-  public void testValidateSyntax() {
+  public void testValidateSyntax() throws URISyntaxException {
     final Issn issn1 = new Issn(VALID_ISSN);
     final Issn issnInvalid1 = new Issn(INVALID_ISSN_CHARS);
     final Issn issnInvalid2 = new Issn(INVALID_ISSN_CHECKSUM);
@@ -80,28 +81,28 @@ public class IssnTest {
 
     try {
       issn1.validateSyntax();
-      Assert.assertTrue(true);
+      assertTrue(true);
     } catch (final ValidationException ve) {
-      Assert.assertTrue(false);
+      assertTrue(false);
     }
     try {
       issnInvalid1.validateSyntax();
-      Assert.assertTrue(false);
+      assertTrue(false);
     } catch (final ValidationException ve) {
-      Assert.assertTrue(true);
+      assertTrue(true);
     }
     try {
       issnInvalid2.validateSyntax();
-      Assert.assertTrue(true);
+      assertTrue(true);
     } catch (final ValidationException ve) {
-      Assert.assertTrue(false);
+      assertTrue(false);
     }
 
     try {
       issnInvalid3.validateSyntax();
-      Assert.assertTrue(false);
+      assertTrue(false);
     } catch (final ValidationException ve) {
-      Assert.assertTrue(true);
+      assertTrue(true);
     }
   }
 }

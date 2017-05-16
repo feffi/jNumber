@@ -1,13 +1,12 @@
-/**
- *
- */
 package de.feffi.jnumber.mobile.imei;
 
-import junit.framework.Assert;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public class ImeiEvaluationSetTest {
 
@@ -19,18 +18,16 @@ public class ImeiEvaluationSetTest {
 
   /**
    * Test method for
-   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#getCheckDigit()}
-   * .
+   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#getCheckDigit()}.
    */
   @Test
   public void testGetCheckDigit() {
-    Assert.assertTrue(true);
+    assertTrue(true);
   }
 
   /**
    * Test method for
-   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#getFinalAssemblyCode()}
-   * .
+   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#getFinalAssemblyCode()}.
    */
   @Test
   public void testGetFinalAssemblyCode() {
@@ -40,13 +37,12 @@ public class ImeiEvaluationSetTest {
         VALID_IMEI_TYPEALLOCATIONCODE,
         VALID_IMEI_FINALASSEMBLYCODE,
         VALID_IMEI_SOFTWAREVERSIONNUMBER);
-    Assert.assertEquals(VALID_IMEI_FINALASSEMBLYCODE, testSet.getFinalAssemblyCode());
+    assertEquals(VALID_IMEI_FINALASSEMBLYCODE, testSet.getFinalAssemblyCode());
   }
 
   /**
    * Test method for
-   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#getSoftwareVersionNumber()}
-   * .
+   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#getSoftwareVersionNumber()}.
    */
   @Test
   public void testGetSoftwareVersionNumber() {
@@ -56,13 +52,12 @@ public class ImeiEvaluationSetTest {
         VALID_IMEI_TYPEALLOCATIONCODE,
         VALID_IMEI_FINALASSEMBLYCODE,
         VALID_IMEI_SOFTWAREVERSIONNUMBER);
-    Assert.assertEquals(VALID_IMEI_SOFTWAREVERSIONNUMBER, testSet.getSoftwareVersionNumber());
+    assertEquals(VALID_IMEI_SOFTWAREVERSIONNUMBER, testSet.getSoftwareVersionNumber());
   }
 
   /**
    * Test method for
-   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#getTypeAllocationCode()}
-   * .
+   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#getTypeAllocationCode()}.
    */
   @Test
   public void testGetTypeApprovalCode() {
@@ -72,13 +67,12 @@ public class ImeiEvaluationSetTest {
         VALID_IMEI_TYPEALLOCATIONCODE,
         VALID_IMEI_FINALASSEMBLYCODE,
         VALID_IMEI_SOFTWAREVERSIONNUMBER);
-    Assert.assertEquals(VALID_IMEI_TYPEALLOCATIONCODE, testSet.getTypeAllocationCode());
+    assertEquals(VALID_IMEI_TYPEALLOCATIONCODE, testSet.getTypeAllocationCode());
   }
 
   /**
    * Test method for
-   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#setCheckDigit(int)}
-   * .
+   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#setCheckDigit(int)}.
    */
   @Test
   public void testSetCheckDigit() {
@@ -88,13 +82,12 @@ public class ImeiEvaluationSetTest {
         VALID_IMEI_TYPEALLOCATIONCODE,
         VALID_IMEI_FINALASSEMBLYCODE,
         VALID_IMEI_SOFTWAREVERSIONNUMBER);
-    Assert.assertEquals(VALID_IMEI_CHECKDIGIT, testSet.getCheckDigit());
+    assertEquals(VALID_IMEI_CHECKDIGIT, testSet.getCheckDigit());
   }
 
   /**
    * Test method for
-   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#setFinalAssemblyCode(java.lang.String)}
-   * .
+   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#setFinalAssemblyCode(java.lang.String)}.
    */
   @Test
   public void testSetFinalAssemblyCode() {
@@ -104,13 +97,12 @@ public class ImeiEvaluationSetTest {
         VALID_IMEI_TYPEALLOCATIONCODE,
         VALID_IMEI_FINALASSEMBLYCODE,
         VALID_IMEI_SOFTWAREVERSIONNUMBER);
-    Assert.assertEquals(VALID_IMEI_FINALASSEMBLYCODE, testSet.getFinalAssemblyCode());
+    assertEquals(VALID_IMEI_FINALASSEMBLYCODE, testSet.getFinalAssemblyCode());
   }
 
   /**
    * Test method for
-   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#setSoftwareVersionNumber(java.lang.String)}
-   * .
+   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#setSoftwareVersionNumber(java.lang.String)}.
    */
   @Test
   public void testSetSoftwareVersionNumber() {
@@ -120,13 +112,12 @@ public class ImeiEvaluationSetTest {
         VALID_IMEI_TYPEALLOCATIONCODE,
         VALID_IMEI_FINALASSEMBLYCODE,
         VALID_IMEI_SOFTWAREVERSIONNUMBER);
-    Assert.assertEquals(VALID_IMEI_SOFTWAREVERSIONNUMBER, testSet.getSoftwareVersionNumber());
+    assertEquals(VALID_IMEI_SOFTWAREVERSIONNUMBER, testSet.getSoftwareVersionNumber());
   }
 
   /**
    * Test method for
-   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#setTypeAllocationCode(java.lang.String)}
-   * .
+   * {@link de.feffi.jnumber.mobile.imei.ImeiEvaluationSet#setTypeAllocationCode(java.lang.String)}.
    */
   @Test
   public void testSetTypeAllocationCode() {
@@ -136,6 +127,6 @@ public class ImeiEvaluationSetTest {
         VALID_IMEI_TYPEALLOCATIONCODE,
         VALID_IMEI_FINALASSEMBLYCODE,
         VALID_IMEI_SOFTWAREVERSIONNUMBER);
-    Assert.assertEquals(VALID_IMEI_TYPEALLOCATIONCODE, testSet.getTypeAllocationCode());
+    assertEquals(VALID_IMEI_TYPEALLOCATIONCODE, testSet.getTypeAllocationCode());
   }
 }

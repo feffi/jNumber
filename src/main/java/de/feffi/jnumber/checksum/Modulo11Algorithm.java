@@ -1,13 +1,10 @@
-/**
- *
- */
 package de.feffi.jnumber.checksum;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public class Modulo11Algorithm {
 
@@ -19,7 +16,7 @@ public class Modulo11Algorithm {
   private String value = null;
 
   /**
-   * @param value
+   * @param value The value to check.
    */
   public Modulo11Algorithm(final String value) {
     super();
@@ -40,7 +37,7 @@ public class Modulo11Algorithm {
    *
    * @return The computation result.
    */
-  public int compute() {
+  private int compute() {
     if (this.getValue() == null) {
       throw new NumberFormatException("Cannot compute modulo 11! Empty number given!");
     }
@@ -71,14 +68,14 @@ public class Modulo11Algorithm {
   /**
    * @return the value
    */
-  public String getValue() {
+  private String getValue() {
     return this.value;
   }
 
   /**
    * @param value the value to set
    */
-  public void setValue(final String value) {
+  void setValue(final String value) {
     this.value = value;
   }
 }

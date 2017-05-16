@@ -1,12 +1,11 @@
-/**
- *
- */
 package de.feffi.jnumber;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public class EnumSerialErrorTest {
 
@@ -15,9 +14,9 @@ public class EnumSerialErrorTest {
    */
   @Test
   public void testToString() {
-//		Assert.assertEquals("Check digit failure!", EnumSerialError.CHECKDIGIT.toString());
-//		Assert.assertEquals("Fake serial!", EnumSerialError.FAKE_SERIAL.toString());
-//		Assert.assertEquals("Invalid serial chars!", EnumSerialError.INVALID_CHARS.toString());
-//		Assert.assertEquals("Invalid serial length!", EnumSerialError.INVALID_LENGTH.toString());
+		assertEquals("Check digit failure!", EnumSerialError.CHECKDIGIT.toString());
+		assertEquals("Fake serial!", EnumSerialError.FAKE_SERIAL.toString());
+		assertEquals("Invalid serial chars!", EnumSerialError.INVALID_CHARS.toString());
+		assertEquals("Invalid serial length!", EnumSerialError.INVALID_LENGTH.toString());
   }
 }

@@ -1,10 +1,7 @@
-/**
- *
- */
 package de.feffi.jnumber.evaluation;
 
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public abstract class AbstractEvaluationSet implements EvaluationSet {
 
@@ -16,7 +13,7 @@ public abstract class AbstractEvaluationSet implements EvaluationSet {
   /**
    * @param valueTransformed The tranformed value.
    */
-  public AbstractEvaluationSet(final String valueTransformed) {
+  protected AbstractEvaluationSet(final String valueTransformed) {
     super();
     this.valueTransformed = valueTransformed;
   }
@@ -31,7 +28,7 @@ public abstract class AbstractEvaluationSet implements EvaluationSet {
   /**
    * @param valueTransformed The transformed value to set.
    */
-  protected void setValueTransformed(final String valueTransformed) {
+  void setValueTransformed(final String valueTransformed) {
     this.valueTransformed = valueTransformed;
   }
 }

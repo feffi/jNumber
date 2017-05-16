@@ -1,16 +1,16 @@
-/**
- *
- */
 package de.feffi.jnumber.mobile.imei;
 
 import de.feffi.jnumber.AbstractSerial;
 import de.feffi.jnumber.EnumSerialError;
+import de.feffi.jnumber.ValidationException;
 import de.feffi.jnumber.checksum.LuhnAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.URISyntaxException;
+
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public class Imei extends AbstractSerial<ImeiEvaluationSet> {
 
@@ -25,8 +25,9 @@ public class Imei extends AbstractSerial<ImeiEvaluationSet> {
 
   /**
    * @param serial The IMEI to check.
+   * @throws URISyntaxException In case of a wrong URI.
    */
-  public Imei(final String serial) {
+  Imei(final String serial) throws URISyntaxException {
     super(STRIPCHARS, VERSION_INTERNAL, VERSION_MANUFACTURER, VERSION_MANUFACTURER_URI);
     this.setValueRaw(serial);
   }
@@ -54,36 +55,44 @@ public class Imei extends AbstractSerial<ImeiEvaluationSet> {
   }
 
   @Override
-  public void validateSemantic() throws ImeiValidationException {
+  public void validateSemantic() throws ValidationException {
     final String transformedSerial = this.transform();
 
     // catch fake IMEIs like "000000000000000"
     if (Long.parseLong(transformedSerial) == 0) {
-      LOG.debug("IMEI [{}] semantic check failure: {}", transformedSerial, EnumSerialError.FAKE_SERIAL.toString());
-      throw new ImeiValidationException(EnumSerialError.FAKE_SERIAL.toString());
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("IMEI [{}] semantic check failure: {}", transformedSerial, EnumSerialError.FAKE_SERIAL.toString());
+      }
+      throw new ValidationException(EnumSerialError.FAKE_SERIAL.toString());
     }
 
     if (!new LuhnAlgorithm(transformedSerial).accept()) {
-      LOG.debug("IMEI [{}] semantic check failure: {}", transformedSerial, EnumSerialError.CHECKDIGIT.toString());
-      throw new ImeiValidationException(EnumSerialError.CHECKDIGIT.toString());
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("IMEI [{}] semantic check failure: {}", transformedSerial, EnumSerialError.CHECKDIGIT.toString());
+      }
+      throw new ValidationException(EnumSerialError.CHECKDIGIT.toString());
     }
     LOG.debug("IMEI [{}] semantic check success.", transformedSerial);
   }
 
   @Override
-  public void validateSyntax() throws ImeiValidationException {
+  public void validateSyntax() throws ValidationException {
     final String transformedSerial = this.transform();
 
     // IMEI must be 14+1 digits
     if (transformedSerial.length() != 15) {
-      LOG.debug("IMEI [{}] syntactic check failure: {}", transformedSerial, EnumSerialError.INVALID_LENGTH.toString());
-      throw new ImeiValidationException(EnumSerialError.INVALID_LENGTH.toString());
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("IMEI [{}] syntactic check failure: {}", transformedSerial, EnumSerialError.INVALID_LENGTH.toString());
+      }
+      throw new ValidationException(EnumSerialError.INVALID_LENGTH.toString());
     }
 
     // cehck for allowed chars
     if (!transformedSerial.chars().allMatch(Character::isDigit)) {
-      LOG.debug("IMEI [{}] syntactic check failure: {}", transformedSerial, EnumSerialError.INVALID_CHARS.toString());
-      throw new ImeiValidationException(EnumSerialError.INVALID_CHARS.toString());
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("IMEI [{}] syntactic check failure: {}", transformedSerial, EnumSerialError.INVALID_CHARS.toString());
+      }
+      throw new ValidationException(EnumSerialError.INVALID_CHARS.toString());
     }
     LOG.debug("IMEI [{}] syntactic check success.", transformedSerial);
   }

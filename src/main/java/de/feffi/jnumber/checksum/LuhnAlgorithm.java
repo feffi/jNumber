@@ -1,13 +1,10 @@
-/**
- *
- */
 package de.feffi.jnumber.checksum;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  * @see <a href="http://en.wikipedia.org/wiki/Luhn_algorithm">Luhn algorithm</a>
  */
 public class LuhnAlgorithm {
@@ -20,7 +17,7 @@ public class LuhnAlgorithm {
   private String value = null;
 
   /**
-   * @param value
+   * @param value The value to check.
    */
   public LuhnAlgorithm(final String value) {
     super();
@@ -47,7 +44,8 @@ public class LuhnAlgorithm {
     }
 
     final int[][] sumTable = {{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, {0, 2, 4, 6, 8, 1, 3, 5, 7, 9}};
-    int sum = 0, flip = 0;
+    int sum = 0;
+    int flip = 0;
 
     for (int i = this.getValue().length() - 1; i >= 0; i--) {
       sum += sumTable[flip++ & 0x1][Character.digit(this.getValue().charAt(i), 10)];
@@ -71,14 +69,14 @@ public class LuhnAlgorithm {
   /**
    * @return the value
    */
-  public String getValue() {
+  String getValue() {
     return this.value;
   }
 
   /**
    * @param value the value to set
    */
-  public void setValue(final String value) {
+  void setValue(final String value) {
     this.value = value;
   }
 }

@@ -1,6 +1,3 @@
-/**
- *
- */
 package de.feffi.jnumber.inventory;
 
 import de.feffi.jnumber.AbstractSerial;
@@ -10,8 +7,10 @@ import de.feffi.jnumber.checksum.Modulo11Algorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.URISyntaxException;
+
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 public class Issn extends AbstractSerial<IssnEvaluationSet> {
 
@@ -26,9 +25,10 @@ public class Issn extends AbstractSerial<IssnEvaluationSet> {
 
   /**
    * @param issn The ISSN to check.
+   * @throws URISyntaxException In case of a wrong URI.
    */
 
-  public Issn(final String issn) {
+  Issn(final String issn) throws URISyntaxException {
     super(STRIPCHARS, VERSION_INTERNAL, VERSION_MANUFACTURER, VERSION_MANUFACTURER_URI);
     this.setValueRaw(issn);
   }
@@ -57,13 +57,17 @@ public class Issn extends AbstractSerial<IssnEvaluationSet> {
 
     // catch fake IMEIs like "00000000"
     if (Long.parseLong(transformedSerial) == 0) {
-      LOG.debug("ISSN [{}] semantic check failure: {}", transformedSerial, EnumSerialError.FAKE_SERIAL.toString());
-      throw new IssnValidationException(EnumSerialError.FAKE_SERIAL.toString());
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("ISSN [{}] semantic check failure: {}", transformedSerial, EnumSerialError.FAKE_SERIAL.toString());
+      }
+      throw new ValidationException(EnumSerialError.FAKE_SERIAL.toString());
     }
 
     if (!new Modulo11Algorithm(transformedSerial).accept()) {
-      LOG.debug("ISSN [{}] semantic check failure: {}", transformedSerial, EnumSerialError.CHECKDIGIT.toString());
-      throw new IssnValidationException(EnumSerialError.CHECKDIGIT.toString());
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("ISSN [{}] semantic check failure: {}", transformedSerial, EnumSerialError.CHECKDIGIT.toString());
+      }
+      throw new ValidationException(EnumSerialError.CHECKDIGIT.toString());
     }
     LOG.debug("ISSN [{}] semantic check success.", transformedSerial);
 
@@ -75,14 +79,18 @@ public class Issn extends AbstractSerial<IssnEvaluationSet> {
 
     // ISSN must be 8 digits
     if (transformedSerial.length() != 8) {
-      LOG.debug("ISSN [{}] syntactic check failure: {}", transformedSerial, EnumSerialError.INVALID_LENGTH.toString());
-      throw new IssnValidationException(EnumSerialError.INVALID_LENGTH.toString());
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("ISSN [{}] syntactic check failure: {}", transformedSerial, EnumSerialError.INVALID_LENGTH.toString());
+      }
+      throw new ValidationException(EnumSerialError.INVALID_LENGTH.toString());
     }
 
     // cehck for allowed chars
     if (!transformedSerial.chars().allMatch(Character::isDigit)) {
-      LOG.debug("ISSN [{}] syntactic check failure: {}", transformedSerial, EnumSerialError.INVALID_CHARS.toString());
-      throw new IssnValidationException(EnumSerialError.INVALID_CHARS.toString());
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("ISSN [{}] syntactic check failure: {}", transformedSerial, EnumSerialError.INVALID_CHARS.toString());
+      }
+      throw new ValidationException(EnumSerialError.INVALID_CHARS.toString());
     }
     LOG.debug("ISSN [{}] syntactic check success.", transformedSerial);
   }

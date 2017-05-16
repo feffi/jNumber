@@ -1,14 +1,9 @@
-/**
- *
- */
 package de.feffi.jnumber.evaluation;
 
-import de.feffi.jnumber.evaluation.AbstractEvaluationSet;
-
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
-public class AbstractEvaluationSetTestClass extends AbstractEvaluationSet {
+class AbstractEvaluationSetTestClass extends AbstractEvaluationSet {
 
   /**
    * @param valueTransformed The serials transformed value.

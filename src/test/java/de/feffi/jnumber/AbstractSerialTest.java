@@ -1,6 +1,3 @@
-/**
- *
- */
 package de.feffi.jnumber;
 
 import de.feffi.jnumber.evaluation.CommonEvaluationSet;
@@ -11,7 +8,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
- * @author feffi
+ * @author feffi <feffi@feffi.org>
  */
 @SuppressWarnings("PMD.TooManyMethods")
 public class AbstractSerialTest {
@@ -26,10 +23,10 @@ public class AbstractSerialTest {
   /**
    * Test method for
    * {@link de.feffi.jnumber.AbstractSerial#AbstractSerial(String, String, String, String)}
-   * . @
+   * .
    */
   @Test
-  public void testAbstractSerial() {
+  public void testAbstractSerial() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -47,25 +44,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method for
-   * {@link de.feffi.jnumber.AbstractSerial#AbstractSerial(String, String, String, String)}
-   * . @
+   * Test method for {@link de.feffi.jnumber.AbstractSerial#evaluate()}.
    */
   @Test
-  public void testAbstractSerialInvalidUri() {
-    final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
-        STRIPCHARS,
-        VERSION_INTERNAL,
-        VERSION_MANUFACTURER,
-        VERSION_MANUFACTURER_URI_INVALID,
-        VALID_IMEI);
-  }
-
-  /**
-   * Test method for {@link de.feffi.jnumber.AbstractSerial#evaluate()}. @
-   */
-  @Test
-  public void testEvaluate() {
+  public void testEvaluate() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -82,10 +64,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method @
+   * Test method
    */
   @Test
-  public void testGetCaonfiguration() {
+  public void testGetCaonfiguration() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -103,10 +85,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method for {@link de.feffi.jnumber.AbstractSerial#getEvaluationSet()}. @
+   * Test method for {@link de.feffi.jnumber.AbstractSerial#getEvaluationSet()}.
    */
   @Test
-  public void testGetEvaluationSet() {
+  public void testGetEvaluationSet() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -119,10 +101,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method for {@link de.feffi.jnumber.AbstractSerial#getValueRaw()}. @
+   * Test method for {@link de.feffi.jnumber.AbstractSerial#getValueRaw()}.
    */
   @Test
-  public void testGetValueRaw() {
+  public void testGetValueRaw() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -133,10 +115,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method for {@link de.feffi.jnumber.AbstractSerial#isValid()}. @
+   * Test method for {@link de.feffi.jnumber.AbstractSerial#isValid()}.
    */
   @Test
-  public void testIsValid() {
+  public void testIsValid() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -148,10 +130,10 @@ public class AbstractSerialTest {
 
   /**
    * Test method for
-   * {@link de.feffi.jnumber.AbstractSerial#setCharFilter(java.lang.String)}. @
+   * {@link de.feffi.jnumber.AbstractSerial#setCharFilter(java.lang.String)}.
    */
   @Test
-  public void testSetCharFilter() {
+  public void testSetCharFilter() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -164,10 +146,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method @
+   * Test method
    */
   @Test
-  public void testSetInternalVersion() {
+  public void testSetInternalVersion() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -180,10 +162,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method @
+   * Test method
    */
   @Test
-  public void testSetManufacturerDocumentationUri() {
+  public void testSetManufacturerDocumentationUri() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -200,10 +182,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method @
+   * Test method
    */
   @Test
-  public void testSetManufacturerVersion() {
+  public void testSetManufacturerVersion() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -217,10 +199,10 @@ public class AbstractSerialTest {
 
   /**
    * Test method for {@link de.feffi.jnumber.AbstractSerial#setValueRaw(java.lang.String)}
-   * . @
+   * .
    */
   @Test
-  public void testSetValueRaw() {
+  public void testSetValueRaw() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -232,10 +214,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method for {@link de.feffi.jnumber.AbstractSerial#transform()}. @
+   * Test method for {@link de.feffi.jnumber.AbstractSerial#transform()}.
    */
   @Test
-  public void testTransform() {
+  public void testTransform() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -246,10 +228,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method for {@link de.feffi.jnumber.AbstractSerial#validate()}. @
+   * Test method for {@link de.feffi.jnumber.AbstractSerial#validate()}.
    */
   @Test
-  public void testValidate() {
+  public void testValidate() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -265,10 +247,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method for {@link de.feffi.jnumber.AbstractSerial#validateSemantic()}. @
+   * Test method for {@link de.feffi.jnumber.AbstractSerial#validateSemantic()}.
    */
   @Test
-  public void testValidateSemantic() {
+  public void testValidateSemantic() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
@@ -284,10 +266,10 @@ public class AbstractSerialTest {
   }
 
   /**
-   * Test method for {@link de.feffi.jnumber.AbstractSerial#validateSyntax()}. @
+   * Test method for {@link de.feffi.jnumber.AbstractSerial#validateSyntax()}.
    */
   @Test
-  public void testValidateSyntax() {
+  public void testValidateSyntax() throws URISyntaxException {
     final AbstractSerialTestClass testClass = new AbstractSerialTestClass(
         STRIPCHARS,
         VERSION_INTERNAL,
